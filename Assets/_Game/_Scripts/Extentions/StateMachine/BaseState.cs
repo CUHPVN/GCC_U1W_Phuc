@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IState
+public abstract class BaseState
 {
-    void EnterState();
-    void UpdateState();
-    void ExitState();
+    protected StateManager stateManager;
+    public virtual void EnterState(StateManager stateManager)
+    {
+        this.stateManager = stateManager;
+    }
+    public abstract void UpdateState();
+    public abstract void ExitState();
     /*
     In Child Class
-    Any : IState
+    Any : BaseState
     {
         GameObject go;
         public Any(GameObject go){

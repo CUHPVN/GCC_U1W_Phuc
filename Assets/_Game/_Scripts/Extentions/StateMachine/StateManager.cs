@@ -4,33 +4,34 @@ using UnityEngine;
 
 public class StateManager
 {
-    private IState _currentState;
+    private BaseState _currentState;
 
-    public StateManager(IState currentState)
+    public StateManager(BaseState currentState)
     {
         _currentState = currentState;
-        _currentState.EnterState();
+        _currentState.EnterState(this);
     }
     public void Update()
     {
         _currentState?.UpdateState();   
     }
-    public void ChangeState(IState state)
+    public void ChangeState(BaseState state)
     {
         _currentState?.ExitState();
         _currentState = state;
-        _currentState.EnterState();
+        _currentState.EnterState(this);
     }
-    public bool IsState(IState state) { return _currentState == state; }
+    public bool IsState(BaseState state) { return _currentState == state; }
+    public BaseState GetState() => _currentState;
     /*
     In Parent Class
     StateMachine stateM;
     <Any>State anyState;
     private void Awake()
     {
-        stateM = GetComponent<StateMachine>();
 
         anyState = new <Any>(this); // inject
+        stateM = new();
     }
      */
 }
