@@ -13,6 +13,7 @@ public class PlayerInput : Singleton<PlayerInput>
     }
     private void MouseDown()
     {
+        if (GameManager.IsState(GameState.Pause)) return;
         RaycastHit2D hit = Physics2D.Raycast(InputManager.Instance.MousePos, Vector2.zero, 0, clickMask);
         if(hit.collider != null)
         {
@@ -26,6 +27,15 @@ public class PlayerInput : Singleton<PlayerInput>
     }
     private void MouseUp()
     {
-        //RaycastHit2D hit = Physics2D.Raycast(InputManager.Instance.MousePos, Vector2.zero, 0, clickMask);
+        return;
+        RaycastHit2D hit = Physics2D.Raycast(InputManager.Instance.MousePos, Vector2.zero, 0, clickMask);
+        if (hit.collider != null)
+        {
+            IClickable clickable = hit.collider.GetComponent<IClickable>();
+            if (clickable != null)
+            {
+                clickable.OnClick();
+            }
+        }
     }
 }

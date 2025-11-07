@@ -14,4 +14,8 @@ public class CanvasSettings : UICanvas
         Close(0);
         UIManager.Instance.OpenUI<CanvasGamePlay>();
     }
+    public void CloseSetting()
+    {
+        GameManager.ChangeState(GameState.Play);
+    }
 }

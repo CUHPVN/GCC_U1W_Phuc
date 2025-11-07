@@ -6,11 +6,6 @@ public class StateManager
 {
     private BaseState _currentState;
 
-    public StateManager(BaseState currentState)
-    {
-        _currentState = currentState;
-        _currentState.EnterState(this);
-    }
     public void Update()
     {
         _currentState?.UpdateState();   
@@ -19,7 +14,7 @@ public class StateManager
     {
         _currentState?.ExitState();
         _currentState = state;
-        _currentState.EnterState(this);
+        _currentState.EnterState();
     }
     public bool IsState(BaseState state) { return _currentState == state; }
     public BaseState GetState() => _currentState;

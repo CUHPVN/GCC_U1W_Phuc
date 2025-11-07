@@ -5,10 +5,11 @@ using UnityEngine;
 public abstract class BaseState
 {
     protected StateManager stateManager;
-    public virtual void EnterState(StateManager stateManager)
+    public BaseState(StateManager stateManager)
     {
         this.stateManager = stateManager;
     }
+    public abstract void EnterState();
     public abstract void UpdateState();
     public abstract void ExitState();
     /*

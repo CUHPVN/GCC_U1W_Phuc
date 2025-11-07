@@ -19,16 +19,17 @@ public class CanvasGamePlay : UICanvas
     }
     public void InventoryButton()
     {
-        Close(0);
+        GameManager.ChangeState(GameState.Pause);
         UIManager.Instance.OpenUI<CanvasInventory>();
     }
     public void SettingsButton()
     {
-        Close(0);
+        GameManager.ChangeState(GameState.Pause);
         UIManager.Instance.OpenUI<CanvasSettings>();
     }
     public void ReloadSceneButton()
     {
         SceneManager.LoadScene("Game");
     }
+   
 }

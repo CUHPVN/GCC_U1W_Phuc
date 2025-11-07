@@ -5,13 +5,12 @@ using UnityEngine;
 public abstract class FarmLandState : BaseState
 {
     protected FarmLand farmLand;
-    public FarmLandState(FarmLand farmLand)
+    public FarmLandState(StateManager stateManager ,FarmLand farmLand):base(stateManager)
     {
         this.farmLand = farmLand;
     }
-    public override void EnterState(StateManager stateManager)
+    public override void EnterState()
     {
-        base.EnterState(stateManager);
     }
 
     public override void ExitState()

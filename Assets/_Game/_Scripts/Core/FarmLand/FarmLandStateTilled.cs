@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class FarmLandStateTilled : FarmLandState
 {
-    public FarmLandStateTilled(FarmLand farmLand) : base(farmLand)
+    public FarmLandStateTilled(StateManager stateManager, FarmLand farmLand) : base(stateManager, farmLand)
     {
     }
 
-    public override void EnterState(StateManager stateManager)
+    public override void EnterState()
     {
-        base.EnterState(stateManager);
         farmLand.ChangeSprite(2);
     }
     public override void ExitState()

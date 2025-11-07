@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class FarmLandStateEmpty : FarmLandState
 {
-    public FarmLandStateEmpty(FarmLand farmLand) : base(farmLand)
+    public FarmLandStateEmpty(StateManager stateManager, FarmLand farmLand) : base(stateManager, farmLand)
     {
     }
 
-    public override void EnterState(StateManager stateManager)
+    public override void EnterState()
     {
-        base.EnterState(stateManager);
         farmLand.ChangeSprite(1);
     }
 

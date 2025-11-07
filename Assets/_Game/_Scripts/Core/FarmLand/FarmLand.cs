@@ -20,11 +20,12 @@ public class FarmLand : MonoBehaviour, IClickable, IGridUnit
     public void OnInit()
     {
         if(spriteRenderer!=null) spriteRenderer = GetComponent<SpriteRenderer>();
-        lockedState = new(this);
-        emptyState = new(this);
-        tilledState = new(this);
-        wateredState = new(this);
-        stateManager = new(lockedState);
+        stateManager = new();
+        lockedState = new(stateManager,this);
+        emptyState = new(stateManager,this);
+        tilledState = new(stateManager, this);
+        wateredState = new(stateManager, this);
+        stateManager.ChangeState(lockedState);
     }
     private void Update()
     {

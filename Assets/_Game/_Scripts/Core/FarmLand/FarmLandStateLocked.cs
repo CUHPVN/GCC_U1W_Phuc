@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class FarmLandStateLocked : FarmLandState
 {
-    public FarmLandStateLocked(FarmLand farmLand) : base(farmLand)
+    public FarmLandStateLocked(StateManager stateManager, FarmLand farmLand) : base(stateManager, farmLand)
     {
     }
 
-    public override void EnterState(StateManager stateManager)
+    public override void EnterState()
     {
-        base.EnterState(stateManager);
         farmLand.ChangeSprite(0);
     }
 

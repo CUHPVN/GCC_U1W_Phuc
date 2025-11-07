@@ -9,8 +9,11 @@ public class ItemSO : ScriptableObject
     [field:SerializeField] public ItemType ItemType { get; private set;}
     [field:SerializeField] public string ItemName { get; private set; }
     [field: SerializeField] public string ItemDescription { get; private set; }
-    [field:SerializeField] public int ItemID { get; private set; }
     [field:SerializeField] public Sprite ItemSprite { get; private set; }
+    public string GetItemID()
+    {
+        return $"{ItemType.ToString() }_{ItemName}";
+    }
 }
 public enum ItemType
 {
