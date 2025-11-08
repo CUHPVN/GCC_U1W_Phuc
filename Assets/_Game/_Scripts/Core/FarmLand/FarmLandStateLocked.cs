@@ -12,6 +12,7 @@ public class FarmLandStateLocked : FarmLandState
     public override void EnterState()
     {
         farmLand.ChangeSprite(0);
+        farmLand.priceVisual.gameObject.SetActive(true);
     }
 
     public override void ExitState()
@@ -22,9 +23,21 @@ public class FarmLandStateLocked : FarmLandState
     {
         
     }
+    public void UpdatePriceVisual()
+    {
+        int cost = (Mathf.Max(farmLand.position.x, farmLand.position.y) + 1);
+        cost = cost * cost * 10;
+        farmLand.priceText.text = cost.ToString();
+    }
     public override void ClickOnFarm()
     {
-        LogCommon.Log("buy");
-        stateManager.ChangeState(farmLand.emptyState);
+        int cost = (Mathf.Max(farmLand.position.x, farmLand.position.y) + 1);
+        cost = cost*cost*10;
+        if (PlayerData.Instance.GetMoney()>=cost )
+        {
+            PlayerData.Instance.AddMoney(-cost);
+            stateManager.ChangeState(farmLand.emptyState);
+            farmLand.priceVisual.gameObject.SetActive(false);
+        }
     }
 }

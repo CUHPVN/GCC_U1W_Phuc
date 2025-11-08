@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class FarmLandStateEmpty : FarmLandState
 {
-    public FarmLandStateEmpty(StateManager stateManager, FarmLand farmLand) : base(stateManager, farmLand)
+    protected ItemSO interactItem;
+
+    public FarmLandStateEmpty(StateManager stateManager, FarmLand farmLand, ItemSO itemSO) : base(stateManager, farmLand)
     {
+        this.interactItem = itemSO;
     }
 
     public override void EnterState()
@@ -27,7 +30,13 @@ public class FarmLandStateEmpty : FarmLandState
     }
     public override void ClickOnFarm()
     {
-        stateManager.ChangeState(farmLand.tilledState);
-        LogCommon.Log(farmLand.position);
+        ItemSO itemSO = Inventory.Instance.GetSelectedItem();
+        if (itemSO != null)
+        {
+            if(itemSO.ItemType == ItemType.Tool&&itemSO==interactItem)
+            {
+                stateManager.ChangeState(farmLand.tilledState);
+            }
+        }
     }
 }

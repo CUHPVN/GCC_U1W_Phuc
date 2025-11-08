@@ -8,6 +8,7 @@ public abstract class FarmLandState : BaseState
     public FarmLandState(StateManager stateManager ,FarmLand farmLand):base(stateManager)
     {
         this.farmLand = farmLand;
+        
     }
     public override void EnterState()
     {

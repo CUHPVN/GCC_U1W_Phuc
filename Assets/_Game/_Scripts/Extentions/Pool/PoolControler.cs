@@ -25,6 +25,6 @@ public enum PoolType
 {
     None=0,
     Item=1,
-    Circle=2,
+    Crop=2,
     QueueIngredient=3,
 }

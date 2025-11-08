@@ -2,11 +2,14 @@ using KatLib.Logger;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class FarmLandStateTilled : FarmLandState
 {
-    public FarmLandStateTilled(StateManager stateManager, FarmLand farmLand) : base(stateManager, farmLand)
+    protected ItemSO interactItem;
+    public FarmLandStateTilled(StateManager stateManager, FarmLand farmLand, ItemSO itemSO) : base(stateManager, farmLand)
     {
+        interactItem = itemSO;
     }
 
     public override void EnterState()
@@ -23,7 +26,18 @@ public class FarmLandStateTilled : FarmLandState
     }
     public override void ClickOnFarm()
     {
-        stateManager.ChangeState(farmLand.wateredState);
-        LogCommon.Log(farmLand.position);
+        ItemSO itemSO = Inventory.Instance.GetSelectedItem();
+        if (farmLand.HasCrop() && farmLand.CanHarvest())
+        {
+            farmLand.Harvest();
+        } else
+        if (itemSO.ItemType == ItemType.Tool && itemSO == interactItem)
+        {
+            stateManager.ChangeState(farmLand.wateredState);
+        } else
+        if (itemSO.ItemType == ItemType.Seed && !farmLand.HasCrop())
+        {
+            farmLand.SetCrop(itemSO.SeedCrop.GetCropID());
+        } 
     }
 }

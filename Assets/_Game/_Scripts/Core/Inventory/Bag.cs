@@ -13,9 +13,32 @@ public class Bag : MonoBehaviour
             {
                 itemSlots.Add(transform.GetChild(i).GetComponent<ItemSlot>());
             }
+        for (int i = 0; i < itemSlots.Count; i++)
+        {
+            ItemSlot itemSlot = itemSlots[i];
+            itemSlot.SetIndex(i+9);
+        }
     }
     public List<ItemSlot> GetItemSlots()
     {
         return itemSlots;
+    }
+    private void OnEnable()
+    {
+        Inventory.Instance.OnInventoryUpdate += UpdateItem;
+    }
+    private void OnDisable()
+    {
+        if (Inventory.Instance != null)
+        {
+            Inventory.Instance.OnInventoryUpdate -= UpdateItem;
+        }
+    } 
+    public void UpdateItem()
+    {
+        foreach (ItemSlot itemSlot in itemSlots)
+        {
+            itemSlot.UpdateItemInInven();
+        }
     }
 }

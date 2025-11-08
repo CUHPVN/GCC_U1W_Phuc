@@ -33,7 +33,7 @@ public class UICanvas : MonoBehaviour
     }
     public virtual void CloseDirectly()
     {
-        gameObject.SetActive(false);
         if (isDestroyOnClose) Destroy(this);
+        gameObject.SetActive(false);
     }
 }

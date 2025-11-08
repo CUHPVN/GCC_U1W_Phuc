@@ -1,26 +1,44 @@
-using KatLib.Logger;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ToolBar : MonoBehaviour
 {
-    [SerializeField] private List<ToolSlot> itemSlots = new List<ToolSlot>(9);
-    [SerializeField] private ItemSO temp;
+    [SerializeField] private List<ItemSlot> itemSlots = new List<ItemSlot>(9);
 
     private void Awake()
     {
         if(itemSlots.Count == 0)
         for (int i = 0;i<transform.childCount;i++)
         {
-            ToolSlot itemSlot = transform.GetChild(i).GetComponent<ToolSlot>();
-            itemSlot.SetToolBar(this);
-            itemSlot.UpdateItem(temp,2);
-            itemSlots.Add(itemSlot);
+            itemSlots.Add(transform.GetChild(i).GetComponent<ItemSlot>());
+        }
+        for (int i = 0; i < itemSlots.Count; i++)
+        {
+            ItemSlot itemSlot = itemSlots[i];
+            itemSlot.SetIndex(i);
         }
     }
-    public void SetSelected(int index)
+    public List<ItemSlot> GetItemSlots()
     {
-        
+        return itemSlots;
+    }
+    private void OnEnable()
+    {
+        Inventory.Instance.OnInventoryUpdate += UpdateItem;
+    }
+    private void OnDisable()
+    {
+        if (Inventory.Instance != null)
+        {
+            Inventory.Instance.OnInventoryUpdate -= UpdateItem;
+        }
+    }
+    public void UpdateItem()
+    {
+        foreach (ItemSlot itemSlot in itemSlots)
+        {
+            itemSlot.UpdateItemInInven();
+        }
     }
 }

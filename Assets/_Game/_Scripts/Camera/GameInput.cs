@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class GameInput : Singleton<GameInput>
@@ -22,6 +23,7 @@ public class GameInput : Singleton<GameInput>
     }
     private void Drag_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        if (IsPointerOverUI()) return;
         if (OnDragAction != null)
         {
             OnDragAction(this, EventArgs.Empty);
@@ -41,5 +43,24 @@ public class GameInput : Singleton<GameInput>
         Vector2 inputVector = playerInputActions.Player.Zoom.ReadValue<Vector2>();
         inputVector = inputVector.normalized;
         return inputVector.y;
+    }
+    public static bool IsPointerOverUI()
+    {
+        if (EventSystem.current == null) return false;
+
+#if UNITY_ANDROID || UNITY_IOS
+    if (Input.touchCount > 0)
+    {
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.GetTouch(0).position;
+
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+        return results.Count > 0;
+    }
+    return false;
+#else
+        return EventSystem.current.IsPointerOverGameObject();
+#endif
     }
 }
