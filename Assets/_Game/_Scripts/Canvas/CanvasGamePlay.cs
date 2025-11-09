@@ -19,7 +19,7 @@ public class CanvasGamePlay : UICanvas
         PlayerData.Instance.OnMoneyChange += UpdateMoney;
         PlayerData.Instance.OnHungerChange += UpdateHunger;
         PlayerData.Instance.OnDayChange += UpdateDay;
-
+        GameManager.OnChangeState += LosePanel;
 
     }
     public void OnDisable()
@@ -30,6 +30,7 @@ public class CanvasGamePlay : UICanvas
             PlayerData.Instance.OnHungerChange -= UpdateHunger;
             PlayerData.Instance.OnDayChange -= UpdateDay;
         }
+        GameManager.OnChangeState -= LosePanel;
 
     }
     public void Start()
@@ -62,8 +63,14 @@ public class CanvasGamePlay : UICanvas
     }
     public void InventoryButton()
     {
-        GameManager.ChangeState(GameState.Pause);
-        UIManager.Instance.OpenUI<CanvasInventory>();
+        //GameManager.ChangeState(GameState.Pause);
+        toolBar.ToogleSelected(false);
+        CanvasInventory canvasInventory= UIManager.Instance.OpenUI<CanvasInventory>();
+        canvasInventory.SetCanvasGamePlay(this);
+    }
+    public void CloseInventory()
+    {
+        toolBar.ToogleSelected(true);
     }
     public void NextDayButton()
     {
@@ -73,6 +80,13 @@ public class CanvasGamePlay : UICanvas
     {
         GameManager.ChangeState(GameState.Pause);
         UIManager.Instance.OpenUI<CanvasSettings>();
+    }
+    public void LosePanel()
+    {
+        if (GameManager.IsState(GameState.Lose))
+        {
+            UIManager.Instance.OpenUI<CanvasLose>();
+        }
     }
     public void ReloadSceneButton()
     {

@@ -47,6 +47,14 @@ public class ToolBarGamePlay : MonoBehaviour
         }
         Inventory.Instance.SetSelectedIndex(index);
     }
+    public void ToogleSelected(bool value)
+    {
+        int index= Inventory.Instance.GetSelectedIndex();
+        if (index != -1)
+        {
+            itemSlots[index].SetSelected(value);
+        }
+    }
     public void UpdateItem()
     {
         foreach (ToolSlot itemSlot in itemSlots)

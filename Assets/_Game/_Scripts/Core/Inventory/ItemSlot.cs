@@ -9,14 +9,28 @@ public class ItemSlot : MonoBehaviour
 {
     [SerializeField] private ItemSO itemSO;
     [SerializeField] private Image image;
+    [SerializeField] private Button button;
+    [SerializeField] private CanvasInventory canvasInventory;
     [SerializeField] private TMP_Text countText;
     [SerializeField] private Color Transfarent;
+    [SerializeField] private GameObject selectedField;
     [SerializeField] private int index;
 
-
+    public void OnEnable()
+    {
+        button.onClick.AddListener(() => OnItemChose());
+    }
+    public void SetCanvas(CanvasInventory canvasInventory)
+    {
+        this.canvasInventory = canvasInventory;
+    }
     public void SetIndex(int index)
     {
         this.index = index;
+    }
+    public void OnItemChose()
+    {
+        canvasInventory.SetChoseUnit(index);
     }
     public void UpdateItem(ItemSO itemSO, int count)
     {
@@ -56,10 +70,9 @@ public class ItemSlot : MonoBehaviour
             image.color = Color.white;
         }
     }
-
-    // Update is called once per frame
-    void Update()
+    public void SetSelected(bool value)
     {
-        
+        selectedField.SetActive(value);
     }
+    public int GetIndex() => index;
 }

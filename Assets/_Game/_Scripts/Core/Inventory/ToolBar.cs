@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ToolBar : MonoBehaviour
 {
+    [SerializeField] private CanvasInventory canvasInventory;
     [SerializeField] private List<ItemSlot> itemSlots = new List<ItemSlot>(9);
 
     private void Awake()
@@ -17,6 +18,7 @@ public class ToolBar : MonoBehaviour
         {
             ItemSlot itemSlot = itemSlots[i];
             itemSlot.SetIndex(i);
+            itemSlot.SetCanvas(canvasInventory);
         }
     }
     public List<ItemSlot> GetItemSlots()

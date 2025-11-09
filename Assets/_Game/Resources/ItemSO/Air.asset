@@ -15,4 +15,8 @@ MonoBehaviour:
   <ItemType>k__BackingField: 0
   <ItemName>k__BackingField: Air
   <ItemDescription>k__BackingField: 
-  <ItemSprite>k__BackingField: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  <ItemSprite>k__BackingField: {fileID: 0}
+  <SeedCrop>k__BackingField: {fileID: 0}
+  <ItemPrice>k__BackingField: 0
+  <UseAble>k__BackingField: 0
+  <SellAble>k__BackingField: 0

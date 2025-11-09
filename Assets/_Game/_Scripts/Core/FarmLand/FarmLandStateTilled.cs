@@ -37,6 +37,7 @@ public class FarmLandStateTilled : FarmLandState
         } else
         if (itemSO.ItemType == ItemType.Seed && !farmLand.HasCrop())
         {
+            Inventory.Instance.PlantSeed(itemSO.GetItemID());
             farmLand.SetCrop(itemSO.SeedCrop.GetCropID());
         } 
     }

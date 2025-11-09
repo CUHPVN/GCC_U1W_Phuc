@@ -16,3 +16,7 @@ MonoBehaviour:
   <ItemName>k__BackingField: WateringCan
   <ItemDescription>k__BackingField: Watering ur head
   <ItemSprite>k__BackingField: {fileID: 1955306269, guid: 6d00d6ef4730c5b45a831edea0f3bc5b, type: 3}
+  <SeedCrop>k__BackingField: {fileID: 0}
+  <ItemPrice>k__BackingField: 0
+  <UseAble>k__BackingField: 0
+  <SellAble>k__BackingField: 0

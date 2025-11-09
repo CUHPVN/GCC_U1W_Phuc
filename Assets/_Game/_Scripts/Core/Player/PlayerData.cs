@@ -18,6 +18,18 @@ public class PlayerData : Singleton<PlayerData>
         OnMoneyChange?.Invoke();
         OnHungerChange?.Invoke();
         inventory.RaiseInventoryUpdate();
+        GameManager.ChangeState(GameState.Play);
+    }
+    public void OnEnable()
+    {
+        PlayerData.Instance.OnDayChange += CheckLose;
+    }
+    public void OnDisable()
+    {
+        if (PlayerData.Instance != null)
+        {
+            PlayerData.Instance.OnDayChange -= CheckLose;
+        }
     }
     public int GetMoney() => money;
     public int GetHunger() => playerHunger;
@@ -38,5 +50,13 @@ public class PlayerData : Singleton<PlayerData>
         day++;
         OnDayChange?.Invoke();
         OnHungerChange?.Invoke();
+    }
+    public void CheckLose()
+    {
+        if (playerHunger <= 0)
+        {
+            Debug.Log("D");
+            GameManager.ChangeState(GameState.Lose);
+        }
     }
 }

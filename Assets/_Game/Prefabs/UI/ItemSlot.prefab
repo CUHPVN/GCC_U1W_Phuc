@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a9feb56f501b6944bf7e139169a7df9, type: 2}
-  m_sharedMaterial: {fileID: -4868806611219012832, guid: 1a9feb56f501b6944bf7e139169a7df9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -313,7 +313,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.8616352, g: 0.8616352, b: 0.8616352, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.74213827, g: 0.74213827, b: 0.74213827, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -359,8 +359,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSO: {fileID: 11400000, guid: 1582c791e5d1df04c84d32aa38cc41ac, type: 2}
   image: {fileID: 7445775585372365367}
+  button: {fileID: 5923768195269206065}
+  canvasInventory: {fileID: 0}
   countText: {fileID: 871924782603687386}
   Transfarent: {r: 0, g: 0, b: 0, a: 0}
+  selectedField: {fileID: 4292726123758423002}
   index: 0
 --- !u!1 &4292726123758423002
 GameObject:

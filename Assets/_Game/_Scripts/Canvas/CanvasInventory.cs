@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class CanvasInventory : UICanvas
 {
+    private CanvasGamePlay canvasGamePlay;
     private List<InventoryUnit> inventory = new List<InventoryUnit>(36);
     [SerializeField] private List<ItemSlot> itemSlots = new List<ItemSlot>(36);
     [SerializeField] private Bag bag;
-    [SerializeField] private Bag toolBar;
+    [SerializeField] private ToolBar toolBar;
+    [SerializeField] private ItemInfor itemInfor;
     private void Start()
     {
-        inventory = Inventory.Instance.GetInventory();
         if (bag != null && toolBar != null)
         {
             itemSlots.AddRange(toolBar.GetItemSlots());
@@ -21,9 +22,10 @@ public class CanvasInventory : UICanvas
     }
     public void UpdateVisual()
     {
+        inventory = Inventory.Instance.GetInventory();
         if (inventory.Count != itemSlots.Count)
         {
-            LogCommon.Log("2 thang nay bi ngu");
+            Debug.Log("2 thang nay bi ngu");
             return;
         }
         for(int i=0;i<itemSlots.Count;i++)
@@ -31,9 +33,30 @@ public class CanvasInventory : UICanvas
             itemSlots[i].UpdateItem(ItemDataBase.Instance.GetItemByID(inventory[i].ID), inventory[i].Count);
         }
     }
+    public void SetChoseUnit(int index)
+    {
+        for(int i = 0; i < itemSlots.Count; i++)
+        {
+            if (i == index)
+            {
+                itemSlots[i].SetSelected(true);
+            }
+            else
+            {
+                itemSlots[i].SetSelected(false);
+            }
+        }
+        itemInfor.SetInventoryUnit(index);
+    }
+    public void SetCanvasGamePlay(CanvasGamePlay canvasGamePlay)
+    {
+        if(canvasGamePlay!=null) UpdateVisual();
+        this.canvasGamePlay = canvasGamePlay;
+    }
     public void CloseInventory()
     {
-        GameManager.ChangeState(GameState.Play);
+        //GameManager.ChangeState(GameState.Play);
+        canvasGamePlay.CloseInventory();
         Close(0);
     }
     public void OnMouseDown()

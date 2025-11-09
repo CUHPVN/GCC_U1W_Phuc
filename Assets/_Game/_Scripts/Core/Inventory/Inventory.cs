@@ -46,7 +46,7 @@ public class Inventory : Singleton<Inventory>
     {
         inventory[0]= new InventoryUnit(ItemHoe.GetItemID(),1);
         inventory[1]= new InventoryUnit(ItemWateringCan.GetItemID(),1);
-        inventory[2]= new InventoryUnit(ItemSeed.GetItemID(),5);
+        inventory[2]= new InventoryUnit(ItemSeed.GetItemID(),99);
         OnInventoryUpdate?.Invoke();
     }
     public bool IsFull()
@@ -84,6 +84,69 @@ public class Inventory : Singleton<Inventory>
             OnInventoryUpdate?.Invoke();
         }
     }
+    public void PlantSeed(string ID)
+    {
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            if (inventory[i].ID == ID)
+            {
+                inventory[i].Count -= 1;
+                //Do some thing
+                if (inventory[i].Count == 0)
+                {
+                    InventoryUnit inventoryUnit = new();
+                    inventoryUnit.ID = air.GetItemID();
+                    inventoryUnit.Count = 0;
+                    inventory[i] = inventoryUnit;
+                }
+                OnInventoryUpdate?.Invoke();
+                return;
+            }
+        }
+    }
+    public void UseItem(int index)
+    {
+        if (inventory[index].ID == air.GetItemID())
+        {
+            Debug.LogWarning("No Item In This Index!!");
+            return;
+        }
+        ItemSO itemSO = GetItemSOByIndex(index);
+        if (!itemSO.UseAble) return;//
+        inventory[index].Count -= 1;
+        if (itemSO.ItemType == ItemType.Crop) 
+        {
+            PlayerData.Instance.AddHunger(itemSO.GetCropHungerPoint());
+        }
+        if (inventory[index].Count == 0)
+        {
+            InventoryUnit inventoryUnit = new();
+            inventoryUnit.ID = air.GetItemID();
+            inventoryUnit.Count = 0;
+            inventory[index] = inventoryUnit;
+        }
+        OnInventoryUpdate?.Invoke();
+    }
+    public void SellItem(int index)
+    {
+        if (inventory[index].ID==air.GetItemID())
+        {
+            Debug.LogWarning("No Item In This Index!!");
+            return;
+        }
+        ItemSO itemSO = GetItemSOByIndex(index);
+        if (!itemSO.SellAble) return;//
+        inventory[index].Count -= 1;
+        PlayerData.Instance.AddMoney(itemSO.ItemPrice);
+        if (inventory[index].Count == 0)
+        {
+            InventoryUnit inventoryUnit = new();
+            inventoryUnit.ID = air.GetItemID();
+            inventoryUnit.Count = 0;
+            inventory[index] = inventoryUnit;
+        }
+        OnInventoryUpdate?.Invoke();
+    }
     public void RaiseInventoryUpdate()
     {
         OnInventoryUpdate?.Invoke();
@@ -96,9 +159,17 @@ public class Inventory : Singleton<Inventory>
     {
         selectedIndex = index;
     }
+    public int GetSelectedIndex()
+    {
+        return selectedIndex;
+    }
     public InventoryUnit GetItemByIndex(int index)
     {
         return inventory[index];
+    }
+    public ItemSO GetItemSOByIndex(int index)
+    {
+        return ItemDataBase.Instance.GetItemByID(inventory[index].ID);
     }
     public ItemSO GetSelectedItem()
     {

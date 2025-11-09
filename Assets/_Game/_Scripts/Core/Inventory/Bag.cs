@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bag : MonoBehaviour
 {
+    [SerializeField] private CanvasInventory canvasInventory;
     [SerializeField] private List<ItemSlot> itemSlots = new List<ItemSlot>(27);
 
     private void Awake()
@@ -17,6 +18,7 @@ public class Bag : MonoBehaviour
         {
             ItemSlot itemSlot = itemSlots[i];
             itemSlot.SetIndex(i+9);
+            itemSlot.SetCanvas(canvasInventory);
         }
     }
     public List<ItemSlot> GetItemSlots()
