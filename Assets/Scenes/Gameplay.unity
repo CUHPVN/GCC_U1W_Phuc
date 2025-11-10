@@ -6987,6 +6987,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2082767460}
     m_Modifications:
+    - target: {fileID: 502098796001238041, guid: 2f1a635373ff8584a99fbb1ede47e207, type: 3}
+      propertyPath: light2D
+      value: 
+      objectReference: {fileID: 619394801}
     - target: {fileID: 704404918477542547, guid: 2f1a635373ff8584a99fbb1ede47e207, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

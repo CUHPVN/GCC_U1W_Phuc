@@ -292,7 +292,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.3658873, g: 0.6289307, b: 0.39407054, a: 1}
+  m_Color: {r: 0.7490196, g: 0.8313726, b: 0.43529415, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -456,5 +456,6 @@ MonoBehaviour:
   - {fileID: 1653963470, guid: 53d227d4d8e184549acf51e6461209a8, type: 3}
   Hoe: {fileID: 11400000, guid: a821dee4ace74dd42ab37b4199f2f022, type: 2}
   WateringCan: {fileID: 11400000, guid: 1f998b787c05ff14e98c95bdcd5784a6, type: 2}
+  crop: {fileID: 0}
   priceVisual: {fileID: 2881233384274824744}
   priceText: {fileID: 3062422280825247432}

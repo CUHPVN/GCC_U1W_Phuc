@@ -52,10 +52,16 @@ public class PlayerData : Singleton<PlayerData>
     }
     public void NextDay()
     {
+        int tmpHunger = playerHunger;
         playerHunger -= day/3;
+        if(playerHunger < 0)
+        {
+            playerHunger = 0;
+        }
+        if(tmpHunger!=playerHunger)
+        OnHungerChange?.Invoke();
         day++;
         OnDayChange?.Invoke();
-        OnHungerChange?.Invoke();
     }
     public void CheckLose()
     {

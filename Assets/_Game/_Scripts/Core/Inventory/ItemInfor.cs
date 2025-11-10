@@ -15,21 +15,28 @@ public class ItemInfor : MonoBehaviour
     [SerializeField] private GameObject left;
     [SerializeField] private GameObject right;
     private ItemSO itemSO;
-    private int index;
+    private int index=-1;
 
     public void Awake()
     {
         use.onClick.AddListener(() =>Use());
         sell.onClick.AddListener(() => Sell());
     }
+    public void OnEnable()
+    {
+        if (index != -1)
+        {
+            UpdateVisual();
+        }
+    }
     public void SetInventoryUnit(int index)
     {
         this.index = index;
-        itemSO = Inventory.Instance.GetItemSOByIndex(index);
         UpdateVisual();
     }
     public void UpdateVisual()
     {
+        itemSO = Inventory.Instance.GetItemSOByIndex(index);
         icon.sprite = itemSO.ItemSprite;
         InventoryUnit inventoryUnit = Inventory.Instance.GetItemByIndex(index);
         if (itemSO.UseAble) use.gameObject.SetActive(true); else use.gameObject.SetActive(false);

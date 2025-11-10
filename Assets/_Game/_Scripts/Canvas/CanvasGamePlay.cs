@@ -18,6 +18,12 @@ public class CanvasGamePlay : UICanvas
     [SerializeField] private AnimationCurve curve;
     [SerializeField] private Light2D light2D;
     [SerializeField] private Transform nextDayButton;
+    [SerializeField] private UIPopUp shopPopUp;
+    [SerializeField] private UIPopUp daycountPopUp;
+    [SerializeField] private UIPopUp nextdayPopUp;
+    [SerializeField] private UIPopUp moneyPopUp;
+    [SerializeField] private UIPopUp hungerPopUp;
+
 
     public void Awake()
     {
@@ -65,10 +71,12 @@ public class CanvasGamePlay : UICanvas
     private void UpdateMoney()
     {
         MoneyText.text = PlayerData.Instance.GetMoney().ToString();
+        moneyPopUp.PopUp();
     }
     private void UpdateHunger()
     {
         HungerText.text = PlayerData.Instance.GetHunger().ToString();
+        hungerPopUp.PopUp();
     }
     private void UpdateDay()
     {
@@ -108,6 +116,9 @@ public class CanvasGamePlay : UICanvas
         nextDayButton.gameObject.SetActive(true);
         //
         PlayerData.Instance.NextDay();
+        shopPopUp.PopUp();
+        daycountPopUp.PopUp();
+        nextdayPopUp.PopUp();
         yield break;
     }
     public void SettingsButton()

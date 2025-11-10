@@ -46,7 +46,7 @@ public class Inventory : Singleton<Inventory>
     {
         inventory[0]= new InventoryUnit(ItemHoe.GetItemID(),1);
         inventory[1]= new InventoryUnit(ItemWateringCan.GetItemID(),1);
-        inventory[2]= new InventoryUnit(ItemSeed.GetItemID(),99);
+        inventory[2]= new InventoryUnit(ItemSeed.GetItemID(),5);
         OnInventoryUpdate?.Invoke();
     }
     public bool IsFull()
