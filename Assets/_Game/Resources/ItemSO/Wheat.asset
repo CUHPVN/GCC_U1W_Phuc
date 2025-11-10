@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ItemType>k__BackingField: 2
   <ItemName>k__BackingField: Wheat
-  <ItemDescription>k__BackingField: Just Wheat Seed
+  <ItemDescription>k__BackingField: Just Wheat
   <ItemSprite>k__BackingField: {fileID: -406911700, guid: c5b541c49d7edff429bd2b51ab503812, type: 3}
   <SeedCrop>k__BackingField: {fileID: 0}
   <ItemPrice>k__BackingField: 10

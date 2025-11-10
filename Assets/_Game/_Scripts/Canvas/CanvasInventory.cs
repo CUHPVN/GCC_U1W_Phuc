@@ -50,7 +50,7 @@ public class CanvasInventory : UICanvas
     }
     public void SetCanvasGamePlay(CanvasGamePlay canvasGamePlay)
     {
-        if(canvasGamePlay!=null) UpdateVisual();
+        if(this.canvasGamePlay!=null) UpdateVisual();
         this.canvasGamePlay = canvasGamePlay;
     }
     public void CloseInventory()

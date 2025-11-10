@@ -26,5 +26,5 @@ public enum PoolType
     None=0,
     Item=1,
     Crop=2,
-    QueueIngredient=3,
+    GrowParticle=3,
 }

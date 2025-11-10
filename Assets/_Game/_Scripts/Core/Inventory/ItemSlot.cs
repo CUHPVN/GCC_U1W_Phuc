@@ -11,6 +11,8 @@ public class ItemSlot : MonoBehaviour
     [SerializeField] private Image image;
     [SerializeField] private Button button;
     [SerializeField] private CanvasInventory canvasInventory;
+    [SerializeField] private CanvasShop canvasShop;
+
     [SerializeField] private TMP_Text countText;
     [SerializeField] private Color Transfarent;
     [SerializeField] private GameObject selectedField;
@@ -24,13 +26,20 @@ public class ItemSlot : MonoBehaviour
     {
         this.canvasInventory = canvasInventory;
     }
+    public void SetShopCanvas(CanvasShop canvasShop)
+    {
+        this.canvasShop = canvasShop;
+    }
     public void SetIndex(int index)
     {
         this.index = index;
     }
     public void OnItemChose()
     {
+        if(canvasInventory!=null&&canvasInventory.gameObject.activeSelf)
         canvasInventory.SetChoseUnit(index);
+        if (canvasShop!=null&&canvasShop.gameObject.activeSelf)
+            canvasShop.SetChoseUnit(index);
     }
     public void UpdateItem(ItemSO itemSO, int count)
     {

@@ -92,7 +92,7 @@ public class Inventory : Singleton<Inventory>
             {
                 inventory[i].Count -= 1;
                 //Do some thing
-                if (inventory[i].Count == 0)
+                if (inventory[i].Count <= 0)
                 {
                     InventoryUnit inventoryUnit = new();
                     inventoryUnit.ID = air.GetItemID();

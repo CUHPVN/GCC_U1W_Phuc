@@ -17,6 +17,6 @@ MonoBehaviour:
   <ItemDescription>k__BackingField: Just Wheat Seed
   <ItemSprite>k__BackingField: {fileID: 1671942403, guid: c5b541c49d7edff429bd2b51ab503812, type: 3}
   <SeedCrop>k__BackingField: {fileID: 11400000, guid: 6b30a6bb4c7187e4d99763a690f6863f, type: 2}
-  <ItemPrice>k__BackingField: 0
+  <ItemPrice>k__BackingField: 2
   <UseAble>k__BackingField: 0
   <SellAble>k__BackingField: 0

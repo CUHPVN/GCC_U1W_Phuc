@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690cff97407e3242a0ed537ab553e94, type: 3}
+  m_Name: PotatoSeed
+  m_EditorClassIdentifier: 
+  <ItemType>k__BackingField: 1
+  <ItemName>k__BackingField: PotatoSeed
+  <ItemDescription>k__BackingField: Just Potato Seed
+  <ItemSprite>k__BackingField: {fileID: 1172019425, guid: c5b541c49d7edff429bd2b51ab503812, type: 3}
+  <SeedCrop>k__BackingField: {fileID: 11400000, guid: 3d32545e222ec2d4087807777dd6a33f, type: 2}
+  <ItemPrice>k__BackingField: 3
+  <UseAble>k__BackingField: 0
+  <SellAble>k__BackingField: 0

@@ -21,7 +21,6 @@ public class ItemInfor : MonoBehaviour
     {
         use.onClick.AddListener(() =>Use());
         sell.onClick.AddListener(() => Sell());
-
     }
     public void SetInventoryUnit(int index)
     {
@@ -35,7 +34,7 @@ public class ItemInfor : MonoBehaviour
         InventoryUnit inventoryUnit = Inventory.Instance.GetItemByIndex(index);
         if (itemSO.UseAble) use.gameObject.SetActive(true); else use.gameObject.SetActive(false);
         if (itemSO.SellAble) sell.gameObject.SetActive(true); else sell.gameObject.SetActive(false);
-        if (inventoryUnit.Count == 0)
+        if (inventoryUnit.Count <= 0)
         {
             icon.color = Transfarent;
             left.SetActive(false);
@@ -53,9 +52,11 @@ public class ItemInfor : MonoBehaviour
     public void Use()
     {
         Inventory.Instance.UseItem(index);
+        UpdateVisual();
     }
     public void Sell()
     {
         Inventory.Instance.SellItem(index);
+        UpdateVisual();
     }
 }

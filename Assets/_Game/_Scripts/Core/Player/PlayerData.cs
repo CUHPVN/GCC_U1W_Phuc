@@ -12,6 +12,7 @@ public class PlayerData : Singleton<PlayerData>
     public event Action OnMoneyChange;
     public event Action OnHungerChange;
     public event Action OnDayChange;
+    public event Action OnNight;
 
     public void Start()
     {
@@ -34,6 +35,7 @@ public class PlayerData : Singleton<PlayerData>
     public int GetMoney() => money;
     public int GetHunger() => playerHunger;
     public int GetDay() => day;
+    public bool CanBuy(int money) => this.money >= money;
     public void AddMoney(int count)
     {
         money += count;
@@ -44,9 +46,13 @@ public class PlayerData : Singleton<PlayerData>
         playerHunger += count;
         OnHungerChange?.Invoke();
     }
+    public void Night()
+    {
+        OnNight?.Invoke();
+    }
     public void NextDay()
     {
-        playerHunger -= day;
+        playerHunger -= day/3;
         day++;
         OnDayChange?.Invoke();
         OnHungerChange?.Invoke();

@@ -1,8 +1,10 @@
 using KatLib.Logger;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class CanvasGamePlay : UICanvas
@@ -13,7 +15,17 @@ public class CanvasGamePlay : UICanvas
     [SerializeField] private TMP_Text MoneyText;
     [SerializeField] private TMP_Text HungerText;
     [SerializeField] private TMP_Text DayText;
+    [SerializeField] private AnimationCurve curve;
+    [SerializeField] private Light2D light2D;
+    [SerializeField] private Transform nextDayButton;
 
+    public void Awake()
+    {
+        if (light2D == null)
+        {
+            light2D = FindAnyObjectByType<Light2D>();
+        }
+    }
     public void OnEnable()
     {
         PlayerData.Instance.OnMoneyChange += UpdateMoney;
@@ -24,6 +36,7 @@ public class CanvasGamePlay : UICanvas
     }
     public void OnDisable()
     {
+        StopAllCoroutines();
         if(PlayerData.Instance != null)
         {
             PlayerData.Instance.OnMoneyChange -= UpdateMoney;
@@ -68,13 +81,34 @@ public class CanvasGamePlay : UICanvas
         CanvasInventory canvasInventory= UIManager.Instance.OpenUI<CanvasInventory>();
         canvasInventory.SetCanvasGamePlay(this);
     }
+    public void ShopButton()
+    {
+        UIManager.Instance.OpenUI<CanvasShop>();
+    }
     public void CloseInventory()
     {
         toolBar.ToogleSelected(true);
     }
     public void NextDayButton()
     {
+        nextDayButton.gameObject.SetActive(false);  
+        StartCoroutine(NextDay());
+    }
+    public IEnumerator NextDay()
+    {
+        float time = 0,duration=2f;
+        PlayerData.Instance.Night();
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            light2D.intensity = curve.Evaluate(time / (duration));
+            yield return null;
+        }
+        light2D.intensity = 1;
+        nextDayButton.gameObject.SetActive(true);
+        //
         PlayerData.Instance.NextDay();
+        yield break;
     }
     public void SettingsButton()
     {

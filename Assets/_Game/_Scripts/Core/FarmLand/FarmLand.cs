@@ -27,12 +27,14 @@ public class FarmLand : MonoBehaviour, IClickable, IGridUnit
     public void OnEnable()
     {
         PlayerData.Instance.OnDayChange += NextDay;
+        PlayerData.Instance.OnNight += Night;
     }
     public void OnDisable()
     {
         if (PlayerData.Instance != null)
         {
             PlayerData.Instance.OnDayChange -= NextDay;
+            PlayerData.Instance.OnNight -= Night;
         }
     }
     public void OnInit()
@@ -82,6 +84,7 @@ public class FarmLand : MonoBehaviour, IClickable, IGridUnit
     {
         if (crop != null) return;
         crop= SimplePool.Spawn<Crop>(PoolType.Crop,transform.position,Quaternion.identity);
+        crop.OnInit();
         crop.OnPlant(ItemDataBase.Instance.GetCropByID(ID));
     }
     public void SetPosition(int x, int y)
@@ -99,6 +102,13 @@ public class FarmLand : MonoBehaviour, IClickable, IGridUnit
         else
         {
             spriteRenderer.sprite = sprites[index];
+        }
+    }
+    public void Night()
+    {
+        if (stateManager.IsState(wateredState) && crop != null)
+        {
+            crop.OnGrow();
         }
     }
     public void NextDay()
