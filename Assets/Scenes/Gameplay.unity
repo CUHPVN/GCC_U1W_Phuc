@@ -527,9 +527,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopStuff:
-  - {fileID: 11400000, guid: 32c46beeffb825c40933aebc88e34860, type: 2}
   - {fileID: 11400000, guid: d57a2179025cbf447ac74fe3e48ec502, type: 2}
+  - {fileID: 11400000, guid: 4e9336c13245bc6449467e8bb1f1bf98, type: 2}
   - {fileID: 11400000, guid: 3e159a0147a6ede4192753af54ae28e3, type: 2}
+  - {fileID: 11400000, guid: 32c46beeffb825c40933aebc88e34860, type: 2}
+  - {fileID: 11400000, guid: 193e43a1ceb3fa042806d30bf07be2da, type: 2}
   air: {fileID: 11400000, guid: 1582c791e5d1df04c84d32aa38cc41ac, type: 2}
 --- !u!1 &619394800
 GameObject:

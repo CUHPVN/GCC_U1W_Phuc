@@ -16,10 +16,9 @@ MonoBehaviour:
   <CropName>k__BackingField: Potato
   <CropDescription>k__BackingField: Just Potato
   <CropSprites>k__BackingField:
-  - {fileID: 1988563152, guid: c5b541c49d7edff429bd2b51ab503812, type: 3}
-  - {fileID: 436070100, guid: c5b541c49d7edff429bd2b51ab503812, type: 3}
-  - {fileID: -1450240971, guid: c5b541c49d7edff429bd2b51ab503812, type: 3}
-  - {fileID: 1462588517, guid: c5b541c49d7edff429bd2b51ab503812, type: 3}
-  <CropGrowingTime>k__BackingField: 4
+  - {fileID: -817387180, guid: 624146ccfa79662408ec443e5f808d86, type: 3}
+  - {fileID: -619215073, guid: 624146ccfa79662408ec443e5f808d86, type: 3}
+  - {fileID: -341003231, guid: 624146ccfa79662408ec443e5f808d86, type: 3}
+  <CropGrowingTime>k__BackingField: 3
   <ResourceCount>k__BackingField: {x: 1, y: 3}
   <CropResource>k__BackingField: {fileID: 11400000, guid: a36228d19fb6f1d49a1d76cd6f5dce51, type: 2}

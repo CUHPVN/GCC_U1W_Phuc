@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a690cff97407e3242a0ed537ab553e94, type: 3}
-  m_Name: Potato
+  m_Name: Tomato
   m_EditorClassIdentifier: 
   <ItemType>k__BackingField: 2
-  <ItemName>k__BackingField: Potato
-  <ItemDescription>k__BackingField: Just Potato, eat give you 18 hungger
-  <ItemSprite>k__BackingField: {fileID: -1223445842, guid: 624146ccfa79662408ec443e5f808d86, type: 3}
+  <ItemName>k__BackingField: Tomato
+  <ItemDescription>k__BackingField: Just Tomato, eat give you 5 hungger point
+  <ItemSprite>k__BackingField: {fileID: 501356661, guid: c5b541c49d7edff429bd2b51ab503812, type: 3}
   <SeedCrop>k__BackingField: {fileID: 0}
-  <ItemPrice>k__BackingField: 20
+  <ItemPrice>k__BackingField: 15
   <UseAble>k__BackingField: 1
   <SellAble>k__BackingField: 1
-  <HunggerGain>k__BackingField: 18
+  <HunggerGain>k__BackingField: 5

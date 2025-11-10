@@ -25,4 +25,5 @@ public enum CropType
     Wheat=0,
     Potato=1,
     Carrot=2,
+    Tomato=3,
 }

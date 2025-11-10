@@ -14,6 +14,7 @@ public class ItemSO : ScriptableObject
     [field: SerializeField] public int ItemPrice { get; private set; }
     [field: SerializeField] public bool UseAble { get; private set; }
     [field: SerializeField] public bool SellAble { get; private set; }
+    [field: SerializeField] public int HunggerGain { get; private set; }
 
 
     public string GetItemID()
@@ -22,20 +23,7 @@ public class ItemSO : ScriptableObject
     }
     public int GetCropHungerPoint()
     {
-        if (ItemType == ItemType.Crop)
-        {
-            //Code Ban help me
-            if (ItemName == "Wheat")
-            {
-                return 3;
-            }
-            if (ItemName == "Tomato")
-            {
-                return 5;
-            }
-        }
-    
-        return 0;
+        return HunggerGain;
     }
 }
 public enum ItemType
